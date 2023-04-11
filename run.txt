@@ -1,0 +1,1 @@
+docker run -itd -v ./files:/srv -p 81:80 filebrowser/filebrowser:latest
