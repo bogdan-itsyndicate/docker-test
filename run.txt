@@ -9,3 +9,6 @@ https://docs.docker.com/engine/reference/commandline/run/
 
 
 docker run -itd -v $(pwd)/files:/srv -p 90:80 filebrowser/filebrowser:latest
+
+
+docker-compose up -d
