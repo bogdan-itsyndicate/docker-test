@@ -1,1 +1,11 @@
 docker run -itd -v ~/files:/srv -p 81:80 filebrowser/filebrowser:latest
+
+docker exec -ti 0c89cb940b3e bash #LOGIN INSIDE CONTAINER
+
+
+
+https://docs.docker.com/desktop/
+https://docs.docker.com/engine/reference/commandline/run/
+
+
+docker run -itd -v $(pwd)/files:/srv -p 90:80 filebrowser/filebrowser:latest
