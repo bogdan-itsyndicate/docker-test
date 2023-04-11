@@ -1,0 +1,38 @@
+version: '3.5'
+services:
+  website:
+    image: httpd:2.4-alpine
+    container_name: website1
+    ports:
+      - 80
+#      - 8888:3000
+    restart: always
+    environment:
+      host: "localhost"
+    depends_on:
+      - mysql
+    volumes:
+    - ./data/website:/usr/local/apache2/htdocs
+    networks:
+      - mynetwork
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    env_file: .env
+    ports:
+      - '3306'
+    volumes:
+      - ./data/mysql/data:/var/lib/mysql
+      - ./data/mysql/my.cnf:/etc/my.cnf
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    name: mynetwork
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.111.1/24
